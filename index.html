@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tehtävälista</title>
+  <link rel="stylesheet" href="tyylit.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="tausta-sininen min-h-screen flex justify-center items-start p-6">
+
+  <!-- Kortti, jossa tehtävälista -->
+  <div class="kortti varjostus pyoristys p-6 w-full max-w-md">
+    <h1 class="otsikko-suuri font-bold mb-4 text-center">Tehtävälista</h1>
+    
+    <!-- Lomake uuden tehtävän lisäämiseen -->
+    <form id="tehtava-lomake" class="lomake flex flex-col gap-2 mb-4">
+      <!-- Tehtävän tekstikenttä -->
+      <input type="text" id="tehtava-syote" placeholder="Kirjoita tehtävä..." class="lomake-kentta border pyoristys px-3 py-2 w-full focus-outline focus-ring">
+      
+      <!-- Prioriteetin valinta -->
+      <select id="prioriteetti-valinta" class="lomake-kentta border pyoristys px-3 py-2 w-full focus-outline focus-ring">
+        <option value="matala">Matala</option>
+        <option value="keskitaso">Keskitaso</option>
+        <option value="korkea">Korkea</option>
+      </select>
+      
+      <!-- Lisää tehtävä -nappi -->
+      <button type="submit" class="nappi-lisaa bg-pink-400 text-valkoinen py-2 pyoristys hover:bg-pink-500 transition">Lisää tehtävä</button>
+    </form>
+
+    <!-- Suodatusnapit -->
+    <div class="suodatus flex justify-center gap-2 mb-4">
+      <button id="kaikki" class="nappi-lisaa py-1 px-3">Kaikki</button>
+      <button id="valmiit" class="nappi-valmis py-1 px-3">Valmiit</button>
+      <button id="keskeneraiset" class="nappi-poista py-1 px-3">Keskeneräiset</button>
+    </div>
+    
+    <!-- Lista tehtävistä -->
+    <ul id="tehtava-lista" class="lista-tilat space-y-2"></ul>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      // Valitaan tarvittavat DOM-elementit
+      const $lista = $('#tehtava-lista');
+      const $syote = $('#tehtava-syote');
+      const $prioriteetti = $('#prioriteetti-valinta');
+
+      // Haetaan tehtävät localStoragesta tai alustetaan tyhjä taulukko
+      let tehtavat = JSON.parse(localStorage.getItem('tehtavat')) || [];
+
+      // Näytetään olemassa olevat tehtävät
+      naytaTehtavat();
+
+      // Lomakkeen lähetys (uuden tehtävän lisääminen)
+      $('#tehtava-lomake').submit(function(e) {
+        e.preventDefault(); // Estetään lomakkeen oletustoiminto
+
+        const teksti = $syote.val().trim(); // Haetaan syötekentän arvo
+        const prior = $prioriteetti.val();  // Haetaan valittu prioriteetti
+
+        // Virheilmoitus, jos kenttä tyhjä
+        if (!teksti) {
+          Swal.fire({ icon: 'error', title: 'Virhe', text: 'Kirjoita tehtävä ennen lisäämistä!' });
+          return;
+        }
+
+        // Luodaan uusi tehtävä-objekti
+        const tehtava = {
+          id: Date.now(),    // Uniikki id
+          teksti: teksti,    // Tehtävän teksti
+          prioriteetti: prior,// Prioriteetti
+          valmis: false      // Alustetaan keskeneräiseksi
+        };
+
+        // Lisätään tehtävä taulukkoon ja tallennetaan localStorageen
+        tehtavat.push(tehtava);
+        localStorage.setItem('tehtavat', JSON.stringify(tehtavat));
+
+        // Päivitetään näkymä ja tyhjennetään syötekenttä
+        naytaTehtavat();
+        $syote.val('');
+
+        // Lyhyt ilmoitus tehtävän lisäämisestä
+        Swal.fire({ icon: 'success', title: 'Tehtävä lisätty', timer: 1000, showConfirmButton: false });
+      });
+
+      // Suodatusnapit
+      $('#kaikki').click(() => naytaTehtavat());
+      $('#valmiit').click(() => naytaTehtavat(tehtava => tehtava.valmis));
+      $('#keskeneraiset').click(() => naytaTehtavat(tehtava => !tehtava.valmis));
+
+      // Näytä tehtävät, tukee suodatusta
+      function naytaTehtavat(suodatin) {
+        $lista.empty(); // Tyhjennetään lista ennen uudelleenluontia
+
+        tehtavat
+          .filter(tehtava => suodatin ? suodatin(tehtava) : true)
+          .forEach(tehtava => {
+            // Määritetään prioriteetin mukainen taustaväri
+            const variLuokka = tehtava.prioriteetti === 'korkea' ? 'tausta-punainen' :
+                               tehtava.prioriteetti === 'keskitaso' ? 'tausta-keltainen' : 'tausta-vihrea';
+
+            // Valmiiksi merkityn tehtävän luokka (harmaa tausta, vaalea teksti)
+            const valmisLuokka = tehtava.valmis ? 'valmis teksti-harmaa' : '';
+
+            // Päivämäärä lisäyksestä
+            const date = new Date(tehtava.id);
+            const aika = date.toLocaleDateString();
+
+            // Luodaan li-elementti tehtävälle
+            const $li = $(`
+              <li class="tehtava-elementti flex justify-between items-center p-2 pyoristys ${variLuokka} ${valmisLuokka}">
+                <span>${tehtava.teksti} <span class="paivamaara text-xs text-gray-300">(${aika})</span></span>
+                <div class="tehtava-napit flex gap-2">
+                  <button class="nappi-valmis bg-vihrea text-valkoinen px-2 py-1 pyoristys hover:bg-vihrea-tumma transition">✓</button>
+                  <button class="nappi-poista bg-punainen text-valkoinen px-2 py-1 pyoristys hover:bg-punainen-tumma transition">✕</button>
+                </div>
+              </li>
+            `);
+
+            // Klikkaus valmiiksi -napille
+            $li.find('.nappi-valmis').click(() => merkkaaValmiiksi(tehtava.id));
+            // Klikkaus poista -napille
+            $li.find('.nappi-poista').click(() => poistaTehtava(tehtava.id));
+
+            // Lisätään li lista-elementtiin
+            $lista.append($li);
+          });
+      }
+
+      // Funktio tehtävän merkitsemiseen valmiiksi/keskeneräiseksi
+      function merkkaaValmiiksi(id) {
+        tehtavat = tehtavat.map(t => t.id === id ? {...t, valmis: !t.valmis} : t);
+        localStorage.setItem('tehtavat', JSON.stringify(tehtavat));
+        naytaTehtavat();
+      }
+
+      // Funktio tehtävän poistamiseen
+      function poistaTehtava(id) {
+        tehtavat = tehtavat.filter(t => t.id !== id);
+        localStorage.setItem('tehtavat', JSON.stringify(tehtavat));
+        naytaTehtavat();
+      }
+    });
+  </script>
+
+</body>
+</html>

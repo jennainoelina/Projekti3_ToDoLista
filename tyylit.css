@@ -1,0 +1,122 @@
+/* TAUSTAT */
+.tausta-sininen {
+    background-color: #000000;
+}
+
+.kortti {
+    background-color: #1f1f1f;
+}
+
+/* VARJOSTUS */
+.varjostus {
+    box-shadow: 0 4px 6px rgba(255,255,255,0.1);
+}
+
+/* PYÖRISTYKSET */
+.pyoristys {
+    border-radius: 0.5rem;
+}
+
+/* OTSIKOT */
+.otsikko-suuri {
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+/* LOMAKE */
+.lomake-kentta {
+    border: 1px solid #555555;
+    background-color: #2a2a2a;
+    color: #ffffff;
+}
+
+.focus-outline:focus {
+    outline: none;
+}
+
+.focus-ring:focus {
+    box-shadow: 0 0 0 2px #3b82f6;
+}
+
+/* NAPIT */
+.nappi-lisaa {
+    background-color: #f472b6;
+    color: #ffffff;
+}
+
+.nappi-lisaa:hover {
+    background-color: #ec4899;
+}
+
+.nappi-valmis {
+    background-color: #16a34a;
+    color: #ffffff;
+}
+
+.nappi-valmis:hover {
+    background-color: #15803d;
+}
+
+.nappi-poista {
+    background-color: #dc2626;
+    color: #ffffff;
+}
+
+.nappi-poista:hover {
+    background-color: #b91c1c;
+}
+
+/* LISTA */
+.lista-tilat {
+    list-style: none;
+    padding: 0;
+}
+
+.tausta-punainen {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+
+.tausta-keltainen {
+    background-color: #facc15;
+    color: #000000;
+}
+
+.tausta-vihrea {
+    background-color: #22c55e;
+    color: #ffffff;
+}
+
+/* TEHTÄVÄT */
+.teksti-harmaa {
+    color: #d1d5db;
+}
+
+.tehtava-elementti {
+    transition: all 0.3s ease;
+}
+
+.tehtava-elementti.valmis {
+    background-color: #4b5563;
+    color: #d1d5db;
+    transform: scale(0.95);
+}
+
+.tehtava-elementti.poistetaan {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+/* SUODATUSNAPIT */
+.suodatus button {
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    transition: background-color 0.2s;
+}
+
+/* PÄIVÄMÄÄRÄ TEHTÄVÄSSÄ */
+.paivamaara {
+    font-size: 0.75rem;
+    color: #9ca3af;
+}
