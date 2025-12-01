@@ -68,7 +68,7 @@ Käytin seuraavia teknologioita sovelluksen rakentamiseen:
 - localStorage
 - Tailwind (CDN)
 
-Koodi tehtiin Visual Studio Code -editorissa.
+Koodi tehtiin Visual Studio Code -editorissa. Demovideo ja julkaistu sovellus ovat internetissä.
 
 ## Asennus 
 1. Sovellus löytyy osoitteesta .....
