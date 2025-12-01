@@ -10,13 +10,9 @@ Linkki projektin videoesittelyyn https://fotovahviala.kuvat.fi/kuvat/Omat/LAUREA
 Koko projektin teki Jenna Vahviala.
 
 ## Oma arvio työstä ja oman osaamisen kehittymisestä
-Mielestäni onnistuin erityisesti ulkoasun luomisessa. Aikaisemmin jäänyt vaivaamaan, ettei ulkoasusta ole tullut "tarpeeksi nätti" omaan makuun. Nyt olen todella tyytyväinen.
-
-Parantamista olisi rajapintahakujen kanssa.
-
-Sovelluksesta jäi puuttumaan lisätiedot kuvia painaessa. Sovellus näyttää myös vain max. 10 tulosta. Kielihaku on myös rajallinen (esim. suomenkielisiä tuloksia ei tule).
-
-Koen, että olen oppinut paljonkin projektia tehdessä. Rajapintojen kutsu ja tietojen käyttö konkretisoitui paremmin kun teki omaa projektia.
+Mielestäni onnistuin ulkoasussa. Koen tumman värin olevan itselleni mukavampi näissä sovelluksissa. Sain ulkoasusta myös modernin ja yksinkertaisen näköisen ilman, että näyttää kuitenkaan tylsältä.
+Sovelluksesta jäi puuttumaan aikarajoitus. Voisi pystyä laittamaan päivämäärän, jolloin pitäisi olla valmis. Tällä hetkellä päivämäärä on vain lisäysajalle ja se on kk/pv/vv muodossa.
+Tuntui, että näiden ulkoisten kirjastojen hyödyntäminen oli juuri se puuttuva osaaminen tällaisten sovellusten luomiseen. Nyt tuntuu, että kykenee soveltamaan oppimaansa suhteellisen hyvin.
 
 Antaisin itselleni arvosanaksi: 5
 
@@ -24,6 +20,8 @@ Antaisin itselleni arvosanaksi: 5
 Kurssi sekä lähiopetus ovat tuntuneet todella hyödyllisiltä. Workshopit ovat auttaneet tehtävien ymmärtämisessä kun apua on saatavilla helposti. Tehtävissä käytettiin paljon opittuja koodeja, mutta myös sellaisia pätkiä ja rakenteita, joita ei mielestäni käyty yhteisesti läpi tai selitetty ollenkaan. Oppimista tukisi huomattavasti koodien läpikäynti ja selitys, mitä yksittäiset koodit tekee. Jouduin itse kysymään tekoälyltä paljon apua koodien selittämisessä, koska teorioissa ei käyty asiaa läpi tarpeeksi perusteellisesti.
 
 Mutta yleisesti ottaen nautin kyllä tästä kurssista, tehtävistä ja opetuksesta. Pidän Mikan opetustyylistä.
+
+Tämän viimeisen projektin tekeminen tuntui haastavammalta, kuin aikaisempien. Tuntui uuvuttavalta jälleen "aloittaa alusta" luominen näin lyhyen ajan sisään. 
 
 
 ## Sisällysluettelo:
