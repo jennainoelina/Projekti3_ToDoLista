@@ -73,12 +73,12 @@ Käytin seuraavia teknologioita sovelluksen rakentamiseen:
 Koodi tehtiin Visual Studio Code -editorissa.
 
 ## Asennus 
-- Sovellus löytyy osoitteesta .....
-- Kirjoita tehtävä tekstikenttään.
-- Valitse prioriteetti.
-- Paina Lisää tehtävä.
-- Voit merkitä tehtävän valmiiksi, poistaa sen tai suodattaa listausta.
-- Tehtävät tallentuvat localStorageen automaattisesti.
+1. Sovellus löytyy osoitteesta .....
+2. Kirjoita tehtävä tekstikenttään.
+3. Valitse prioriteetti.
+4. Paina Lisää tehtävä.
+5. Voit merkitä tehtävän valmiiksi, poistaa sen tai suodattaa listausta.
+6. Tehtävät tallentuvat localStorageen automaattisesti.
 
 ## Kiitokset  
 - AI (ChatGPT)
