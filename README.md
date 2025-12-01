@@ -49,7 +49,7 @@ Sovelluksessa voi:
 - prioriteetit näkyvät eri väreillä
 
 ## Tunnetut virheet/bugit
-Tehtävät eivät ole järjestettävissä vedä-ja-pudota -tyylillä (potentiaalista jatkokehitystä).
+Tehtävät eivät ole järjestettävissä vedä-ja-pudota -tyylillä (potentiaalista jatkokehitystä). Tunnettuja bugeja ei oikein syntynyt projektin luomisen aikana.
 
 ## Kuvakaappaukset
 [ESIM1](./kuvat/SS1.png)
