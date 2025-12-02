@@ -2,7 +2,7 @@
 Projektin "Tehtävälista" tekijänä Jenna Vahviala
 
 ## Verkkolinkit:
-Pääset julkaistuun sovellukseen käsiksi osoitteessa .....
+Pääset julkaistuun sovellukseen käsiksi osoitteessa https://tehtavalistajv.netlify.app/
 
 Linkki projektin videoesittelyyn https://fotovahviala.kuvat.fi/kuvat/Omat/LAUREA/Websovellusten+kehitt%C3%A4minen/
 
@@ -71,7 +71,7 @@ Käytin seuraavia teknologioita sovelluksen rakentamiseen:
 Koodi tehtiin Visual Studio Code -editorissa. Demovideo ja julkaistu sovellus ovat internetissä.
 
 ## Asennus 
-1. Sovellus löytyy osoitteesta .....
+1. Sovellus löytyy osoitteesta https://tehtavalistajv.netlify.app/
 2. Kirjoita tehtävä tekstikenttään.
 3. Valitse prioriteetti.
 4. Paina Lisää tehtävä.
